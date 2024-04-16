@@ -17,9 +17,9 @@ import com.tech.mynewsappmvvm.presentation.Dimens.IndicatorSize
 fun PagingIndicator(
     modifier : Modifier = Modifier,
     pageSize : Int,
-    selectPage : Int,
+    selectedPage : Int,
     selectedColor : Color = MaterialTheme.colorScheme.primary,
-    unselectedColor : Color = Color.Blue
+    unselectedColor : Color = Color.Gray
 ) {
     Row(
         modifier = modifier, horizontalArrangement = Arrangement.SpaceBetween
@@ -27,7 +27,7 @@ fun PagingIndicator(
         repeat(pageSize){page->
             Box(
                 modifier = Modifier.size(IndicatorSize).clip(CircleShape)
-                    .background(color = if(page == selectPage) selectedColor else unselectedColor)
+                    .background(color = if(page == selectedPage) selectedColor else unselectedColor)
             )
         }
     }
