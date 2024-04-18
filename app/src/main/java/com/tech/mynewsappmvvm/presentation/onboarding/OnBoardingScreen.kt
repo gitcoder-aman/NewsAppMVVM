@@ -87,6 +87,9 @@ fun OnBoardingScreen(
                     }
                 }
                 NewsButton(text = buttonState.value[1]) {
+//                    Log.i("@@@@", "OnBoardingScreen: ${pagerState.currentPage}")
+//                    Log.i("@@@@", "OnBoardingScreen: ${buttonState.value[1]}")
+
                     scope.launch {
                         if (pagerState.currentPage == 2) {
                             //TODO : Navigate to Home Screen

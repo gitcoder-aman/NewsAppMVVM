@@ -1,4 +1,4 @@
-package com.tech.mynewsappmvvm.domain.usercases
+package com.tech.mynewsappmvvm.domain.usecases
 
 data class AppEntryUseCases(
     val readAppEntry: ReadAppEntry,

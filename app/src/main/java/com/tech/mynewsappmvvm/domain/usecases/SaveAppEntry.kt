@@ -1,4 +1,4 @@
-package com.tech.mynewsappmvvm.domain.usercases
+package com.tech.mynewsappmvvm.domain.usecases
 
 import com.tech.mynewsappmvvm.domain.manager.LocalUserManger
 

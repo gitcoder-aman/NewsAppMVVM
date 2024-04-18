@@ -1,8 +1,9 @@
 package com.tech.mynewsappmvvm.presentation.onboarding
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tech.mynewsappmvvm.domain.usercases.AppEntryUseCases
+import com.tech.mynewsappmvvm.domain.usecases.AppEntryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,6 +24,7 @@ class OnBoardingViewModel @Inject constructor(
     private fun saveAppEntry() {
         viewModelScope.launch {
             appEntryUseCases.saveAppEntry()
+            Log.i("@@@@", "OnBoardingViewModel: ${appEntryUseCases.saveAppEntry.invoke()}")
         }
     }
 }

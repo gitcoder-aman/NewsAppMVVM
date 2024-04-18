@@ -3,9 +3,9 @@ package com.tech.mynewsappmvvm.di
 import android.app.Application
 import com.tech.mynewsappmvvm.data.manager.LocalUserMangerImpl
 import com.tech.mynewsappmvvm.domain.manager.LocalUserManger
-import com.tech.mynewsappmvvm.domain.usercases.AppEntryUseCases
-import com.tech.mynewsappmvvm.domain.usercases.ReadAppEntry
-import com.tech.mynewsappmvvm.domain.usercases.SaveAppEntry
+import com.tech.mynewsappmvvm.domain.usecases.AppEntryUseCases
+import com.tech.mynewsappmvvm.domain.usecases.ReadAppEntry
+import com.tech.mynewsappmvvm.domain.usecases.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
