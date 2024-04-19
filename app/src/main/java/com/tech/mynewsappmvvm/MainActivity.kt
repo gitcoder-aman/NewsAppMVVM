@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.tech.mynewsappmvvm.presentation.common.ArticleCardShimmerEffect
 import com.tech.mynewsappmvvm.presentation.nvgraph.NavGraph
 import com.tech.mynewsappmvvm.ui.theme.MyNewsAppMVVMTheme
 import com.tech.mynewsappmvvm.viewmodel.MainViewModel
@@ -59,6 +60,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val startDestination = viewModel.startDestination
                     NavGraph(startDestination = startDestination)
+                    ArticleCardShimmerEffect()
                 }
             }
         }
