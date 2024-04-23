@@ -8,4 +8,5 @@ interface NewsRepository {
 
     //       pagingData is basically a technic that enable that use fetch data from server
     fun getNews(sources : List<String>) : Flow<PagingData<Article>>
+    fun searchNews(searchQuery:String,sources : List<String>) : Flow<PagingData<Article>>
 }

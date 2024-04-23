@@ -2,7 +2,7 @@ package com.tech.mynewsappmvvm.di
 
 import android.app.Application
 import com.tech.mynewsappmvvm.data.manager.LocalUserMangerImpl
-import com.tech.mynewsappmvvm.data.remote.NewsApi
+import com.tech.mynewsappmvvm.data.remote.dto.NewsApi
 import com.tech.mynewsappmvvm.data.repository.NewsRepositoryImpl
 import com.tech.mynewsappmvvm.domain.manager.LocalUserManger
 import com.tech.mynewsappmvvm.domain.repository.NewsRepository
@@ -11,6 +11,7 @@ import com.tech.mynewsappmvvm.domain.usecases.app_entry.ReadAppEntry
 import com.tech.mynewsappmvvm.domain.usecases.app_entry.SaveAppEntry
 import com.tech.mynewsappmvvm.domain.usecases.news.GetNews
 import com.tech.mynewsappmvvm.domain.usecases.news.NewsUseCases
+import com.tech.mynewsappmvvm.presentation.search.SearchNews
 import com.tech.mynewsappmvvm.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -41,7 +42,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsApi() : NewsApi{
+    fun provideNewsApi() : NewsApi {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -59,7 +60,8 @@ object AppModule {
         newsRepository: NewsRepository
     ) : NewsUseCases{
         return NewsUseCases(
-            getNews = GetNews(newsRepository)
+            getNews = GetNews(newsRepository),
+            searchNews = SearchNews(newsRepository)
         )
     }
 }

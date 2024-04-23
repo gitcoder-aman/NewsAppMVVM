@@ -1,4 +1,4 @@
-package com.tech.mynewsappmvvm.data.remote
+package com.tech.mynewsappmvvm.data.remote.dto
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

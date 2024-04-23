@@ -1,5 +1,6 @@
 package com.tech.mynewsappmvvm.presentation.nvgraph
 
+import android.widget.SearchView
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -12,6 +13,8 @@ import com.tech.mynewsappmvvm.presentation.home.HomeScreen
 import com.tech.mynewsappmvvm.presentation.home.HomeViewModel
 import com.tech.mynewsappmvvm.presentation.onboarding.OnBoardingScreen
 import com.tech.mynewsappmvvm.presentation.onboarding.OnBoardingViewModel
+import com.tech.mynewsappmvvm.presentation.search.SearchScreen
+import com.tech.mynewsappmvvm.presentation.search.SearchViewModel
 
 @Composable
 fun NavGraph(
@@ -40,10 +43,13 @@ fun NavGraph(
             composable(
                 route = Route.NewsNavigationScreen.route
             ){
-                val viewModel : HomeViewModel = hiltViewModel()
-                val articles = viewModel.news.collectAsLazyPagingItems()
-                HomeScreen(articles = articles) {
-
+                val viewModel : SearchViewModel = hiltViewModel()
+//                val articles = viewModel.news.collectAsLazyPagingItems()
+//                HomeScreen(articles = articles) {
+//
+//                }
+                SearchScreen(state = viewModel.state.value, event =viewModel::onEvent ) {
+                    
                 }
             }
         }
