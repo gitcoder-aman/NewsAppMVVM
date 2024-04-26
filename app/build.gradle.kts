@@ -4,6 +4,7 @@ plugins {
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
+    kotlin("plugin.serialization") version "1.5.31"
 //    id("com.google.devtools.ksp")
 }
 
@@ -104,7 +105,13 @@ dependencies {
 
     //Room
     implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
+
+    //json for passing the data in navigation
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+
+//    implementation("androidx.compose.ui:ui-web:$1.6.6")
 }
 // Allow references to generated code
 kapt {

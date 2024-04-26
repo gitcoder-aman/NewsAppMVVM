@@ -4,5 +4,8 @@ import com.tech.mynewsappmvvm.presentation.search.SearchNews
 
 data class NewsUseCases(
     val getNews: GetNews,
-    val searchNews : SearchNews
+    val searchNews : SearchNews,
+    val upsertArticle: UpsertArticle,
+    val deleteArticle: DeleteArticle,
+    val selectArticle : SelectArticles
 )

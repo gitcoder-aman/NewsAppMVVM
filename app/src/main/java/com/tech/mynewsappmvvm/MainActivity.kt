@@ -1,6 +1,10 @@
 package com.tech.mynewsappmvvm
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -11,20 +15,27 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.tech.mynewsappmvvm.data.local.NewsDao
+import com.tech.mynewsappmvvm.domain.model.Article
+import com.tech.mynewsappmvvm.domain.model.Source
 import com.tech.mynewsappmvvm.presentation.common.ArticleCardShimmerEffect
 import com.tech.mynewsappmvvm.presentation.nvgraph.NavGraph
 import com.tech.mynewsappmvvm.ui.theme.MyNewsAppMVVMTheme
 import com.tech.mynewsappmvvm.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 //
 //    @Inject
-//    lateinit var useCases: AppEntryUseCases
+//    lateinit var dao: NewsDao
 
     val viewModel by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +53,7 @@ class MainActivity : ComponentActivity() {
 //                Log.d("Test", "onCreate: ${it.toString()}")
 //            }
 //        }
+
         setContent {
             MyNewsAppMVVMTheme {
 
@@ -60,6 +72,14 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val startDestination = viewModel.startDestination
                     NavGraph(startDestination = startDestination)
+
+
+//                    Intent(Intent.ACTION_VIEW).also {
+//                        it.data = Uri.parse("https://www.4tube.com/embed/651240")
+//                        if (it.resolveActivity(packageManager) != null) {
+//                            startActivity(it)
+//                        }
+//                    }
                 }
             }
         }

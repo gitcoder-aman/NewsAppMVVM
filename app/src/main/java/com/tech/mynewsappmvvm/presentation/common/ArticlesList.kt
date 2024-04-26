@@ -9,11 +9,33 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.tech.mynewsappmvvm.domain.model.Article
 import com.tech.mynewsappmvvm.presentation.Dimens.ExtraSmallPadding2
 import com.tech.mynewsappmvvm.presentation.Dimens.MediumPadding1
+
+
+@Composable
+fun ArticlesList(
+    modifier: Modifier = Modifier,
+    articles: List<Article>,
+    onClick: (Article) -> Unit
+) {
+    LazyColumn(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(MediumPadding1),
+        contentPadding = PaddingValues(all = 1.dp)
+    ) {
+        items(count = articles.size) {
+            Log.d("@@Article", "ArticlesList: ${articles.size}")
+            val article = articles[it]
+            ArticleCard(article = article, onClick = { onClick(article) })
+
+        }
+    }
+}
 
 @Composable
 fun ArticlesList(
@@ -22,21 +44,20 @@ fun ArticlesList(
     onClick: (Article) -> Unit
 ) {
     val handlePagingResult = handlePagingResult(articles = articles)
-    if(handlePagingResult){
+    if (handlePagingResult) {
         LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+            modifier = modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(MediumPadding1),
             contentPadding = PaddingValues(all = ExtraSmallPadding2)
         ) {
-            items(count = articles.itemCount){
+            items(count = articles.itemCount) {
                 Log.d("@@Article", "ArticlesList: ${articles.itemCount}")
                 articles[it]?.let {
-                    ArticleCard(article = it, onClick = {onClick(it)})
+                    ArticleCard(article = it, onClick = { onClick(it) })
                 }
             }
         }
     }
-
 }
 
 @Composable
@@ -56,10 +77,12 @@ fun handlePagingResult(
             ShimmerEffect()
             false
         }
+
         error != null -> {
             EmptyScreen()
             false
         }
+
         else -> {
             true
         }
