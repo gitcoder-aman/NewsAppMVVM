@@ -72,14 +72,6 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val startDestination = viewModel.startDestination
                     NavGraph(startDestination = startDestination)
-
-
-//                    Intent(Intent.ACTION_VIEW).also {
-//                        it.data = Uri.parse("https://www.4tube.com/embed/651240")
-//                        if (it.resolveActivity(packageManager) != null) {
-//                            startActivity(it)
-//                        }
-//                    }
                 }
             }
         }

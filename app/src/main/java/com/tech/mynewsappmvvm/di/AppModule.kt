@@ -16,6 +16,7 @@ import com.tech.mynewsappmvvm.domain.usecases.app_entry.SaveAppEntry
 import com.tech.mynewsappmvvm.domain.usecases.news.DeleteArticle
 import com.tech.mynewsappmvvm.domain.usecases.news.GetNews
 import com.tech.mynewsappmvvm.domain.usecases.news.NewsUseCases
+import com.tech.mynewsappmvvm.domain.usecases.news.SelectArticle
 import com.tech.mynewsappmvvm.domain.usecases.news.SelectArticles
 import com.tech.mynewsappmvvm.domain.usecases.news.UpsertArticle
 import com.tech.mynewsappmvvm.presentation.search.SearchNews
@@ -61,21 +62,22 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsRepository(
-        newsApi: NewsApi
-    ): NewsRepository = NewsRepositoryImpl(newsApi)
+        newsApi: NewsApi,
+        newsDao: NewsDao
+    ): NewsRepository = NewsRepositoryImpl(newsApi,newsDao)
 
     @Provides
     @Singleton
     fun provideNewsUseCases(
-        newsRepository: NewsRepository,
-        newsDao: NewsDao
+        newsRepository: NewsRepository
     ): NewsUseCases {
         return NewsUseCases(
             getNews = GetNews(newsRepository),
             searchNews = SearchNews(newsRepository),
-            upsertArticle = UpsertArticle(newsDao),
-            deleteArticle = DeleteArticle(newsDao),
-            selectArticle = SelectArticles(newsDao)
+            upsertArticle = UpsertArticle(newsRepository),
+            deleteArticle = DeleteArticle(newsRepository),
+            selectArticles = SelectArticles(newsRepository),
+            selectArticle = SelectArticle(newsRepository)
         )
     }
 

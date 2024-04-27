@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.tech.mynewsappmvvm.domain.model.Article
-import com.tech.mynewsappmvvm.presentation.Dimens.ExtraSmallPadding2
 import com.tech.mynewsappmvvm.presentation.Dimens.MediumPadding1
 
 
@@ -48,7 +47,7 @@ fun ArticlesList(
         LazyColumn(
             modifier = modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(MediumPadding1),
-            contentPadding = PaddingValues(all = ExtraSmallPadding2)
+            contentPadding = PaddingValues(all = 1.dp)
         ) {
             items(count = articles.itemCount) {
                 Log.d("@@Article", "ArticlesList: ${articles.itemCount}")

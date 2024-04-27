@@ -108,10 +108,6 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
 
-    //json for passing the data in navigation
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-
-//    implementation("androidx.compose.ui:ui-web:$1.6.6")
 }
 // Allow references to generated code
 kapt {
